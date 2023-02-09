@@ -1,4 +1,5 @@
 const express = require('express')
+const path = require('path');
 
 const aluno = express.Router({mergeParams: true})
 
@@ -33,6 +34,9 @@ aluno.get('/aluno/:id', function (req, res) { // :parametro diz que oq vai receb
       
 });
   
+aluno.get('/criar-aluno', function(req, res) {
+  res.sendFile(path.join(__dirname, "../visoes/criar_aluno.html"));
+});
 
 // consulta todos os alunos
 aluno
@@ -65,16 +69,18 @@ aluno
   // cria
   .post('/aluno', function (req, res) {
     console.log('recebida requisição create aluno');
-    /*
-    controllerAluno.createAluno(req.body)
-    .then(resultado => {
-      res.send('Aluno inserido com sucesso')
-    })
-    .catch(erro => {
-      console.log(erro);
-      res.send(erro);
-    })
-    */
+    //console.log(req.body);
+
+    controllerAluno.create(req.body)
+      .then(resultado => {
+        console.log(resultado);
+        res.send('Aluno inserido com sucesso')
+      })
+      .catch(erro => {
+        console.log(erro);
+        res.send(erro);
+      })
+    
   })
   
   // deleta

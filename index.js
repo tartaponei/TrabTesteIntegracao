@@ -23,6 +23,7 @@ app.listen(3000, ()=>{
 //const Aluno = require('./modelos/aluno_modelo');
 //const Aluno = require('./controles/aluno_controle');
 
+Aluno.sync({force: true});
 
 // teste de conexão
 try {

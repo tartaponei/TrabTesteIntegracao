@@ -20,7 +20,7 @@ Aluno.init({
 
     data_nascimento: {
         type: DataTypes.DATEONLY,
-        allowNull: false
+        allowNull: true
     },
 
     email: {

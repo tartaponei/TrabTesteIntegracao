@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Aluno</title>
+</head>
+<body>
+    <h1>Adicionando um aluno</h1>
+
+    <form action="/aluno" method="POST">
+        <label for="nome">Nome do aluno: </label>
+        <input type="text" name="nome"><br>
+
+        <label for="matricula">Matrícula do aluno: </label>
+        <input type="text" name="matricula"><br>
+
+        <label for="data_nascimento">Data de nascimento do aluno: </label>
+        <input type="date" name="data_nascimento"><br>
+
+        <label for="email">Email do aluno: </label>
+        <input type="email" name="email"><br>
+
+        <input type="submit" value="Criar aluno">
+    </form>
+</body>
+</html>

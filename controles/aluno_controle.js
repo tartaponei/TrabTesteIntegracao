@@ -1,16 +1,20 @@
 const Aluno = require('../modelos/aluno_modelo');
 const express = require('express');
 const app = express();
+const mysql = require('mysql2');
 
 // Criação (Create)
-exports.create = async (req, res) => {
+exports.create = async (body) => {
+    let { nome, matricula, data_nasc, email } = body;
+    console.log(data_nasc);
+
     try {
-        const { matricula, nome, data_nascimento, email } = req.body;
-        const aluno = await Aluno.create({ matricula, nome, data_nascimento, email });
-        res.send(aluno);
+        let aluno = await Aluno.create({ nome, matricula, data_nasc, email });
+        //console.log(aluno);
+        return aluno;
     } 
     catch (error) {
-        res.status(500).send(error);
+        return error;
     }
 };
 
