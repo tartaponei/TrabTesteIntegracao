@@ -1,0 +1,80 @@
+const Aluno = require('../modelos/aluno_modelo');
+const express = require('express');
+const app = express();
+
+// Criação (Create)
+exports.create = async (req, res) => {
+    try {
+        const { matricula, nome, data_nascimento, email } = req.body;
+        const aluno = await Aluno.create({ matricula, nome, data_nascimento, email });
+        res.send(aluno);
+    } 
+    catch (error) {
+        res.status(500).send(error);
+    }
+};
+
+// Leitura (Read)
+exports.read = async (matricula) => {
+    console.log(matricula);
+    try {
+        const aluno = await Aluno.findByPk(matricula);
+        console.log(aluno);
+        if (!aluno) {
+            //return res.status(404).send('Aluno não encontrado');
+            return('não tem');
+        }
+        return(aluno);
+    } 
+        catch (error) {
+            return('erro');
+            //res.status(500).send(error);
+    }
+};
+
+// Leitura de todos (Read)
+exports.readAll = async () => {
+    try {
+        const alunos = await Aluno.findAll();
+        if (!alunos) {
+            //return res.status(404).send('Aluno não encontrado');
+            return('não tem');
+        }
+        return(alunos);
+    } 
+        catch (error) {
+            return('erro');
+            //res.status(500).send(error);
+    }
+};
+
+// Atualização (Update)
+exports.update = async (req, res) => {
+    try {
+        const aluno = await Aluno.findByPk(req.params.id);
+        if (!aluno) {
+            return res.status(404).send('Aluno não encontrado');
+        }
+        const { matricula, nome, data_nascimento, email } = req.body;
+        await aluno.update({ matricula, nome, data_nascimento, email });
+        res.send(aluno);
+    } 
+    catch (error) {
+        res.status(500).send(error);
+    }
+};
+
+// Exclusão (Delete)
+exports.delete = async (req, res) => {
+    try {
+        const aluno = await Aluno.findByPk(req.params.id);
+        if (!aluno) {
+            return res.status(404).send('Aluno não encontrado');
+        }
+        await aluno.destroy();
+        res.send('Aluno excluído com sucesso');
+    }
+        catch (error) {
+            res.status(500).send(error);
+    }
+};

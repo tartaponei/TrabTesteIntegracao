@@ -1,0 +1,27 @@
+{
+  "name": "trabtesteintegracao",
+  "version": "1.0.0",
+  "description": "Trabalho de teste de integração de Tópicos Especiais em Engenharia de Software.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tartaponei/TrabTesteIntegracao.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tartaponei/TrabTesteIntegracao/issues"
+  },
+  "homepage": "https://github.com/tartaponei/TrabTesteIntegracao#readme",
+  "devDependencies": {
+    "jest": "^29.4.2"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql2": "^3.1.2",
+    "sequelize": "^6.28.0"
+  }
+}
