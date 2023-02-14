@@ -52,7 +52,7 @@ aluno
 
         for (var i = 0; i < resultado.length; i++) {
           alunoTemp = resultado[i];
-          console.log('aaaaaaaaaaa' + alunoTemp);
+          //console.log('aaaaaaaaaaa' + alunoTemp);
 
           alunos = alunos + 'Nome: ' + alunoTemp.nome + '<br> Matrícula: ' + alunoTemp.matricula + '<br> Data de Nascimento: ' + alunoTemp.data_nascimento + '<br> Email: ' + alunoTemp.email + '<br> <br>'
         }

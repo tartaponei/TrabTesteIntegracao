@@ -5,11 +5,13 @@ const mysql = require('mysql2');
 
 // Criação (Create)
 exports.create = async (body) => {
-    let { nome, matricula, data_nasc, email } = body;
-    console.log(data_nasc);
+    console.log(body);
+    let { nome, matricula, data_nascimento, email } = body;
+    console.log(data_nascimento);
+    data_nascimento = String(data_nascimento);
 
     try {
-        let aluno = await Aluno.create({ nome, matricula, data_nasc, email });
+        let aluno = await Aluno.create({ nome, matricula, data_nascimento, email });
         //console.log(aluno);
         return aluno;
     } 
