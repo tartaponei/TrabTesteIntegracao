@@ -54,6 +54,7 @@ exports.readAll = async () => {
     }
 };
 
+// nao implementado ainda
 // Atualização (Update)
 exports.update = async (req, res) => {
     try {
@@ -70,17 +71,18 @@ exports.update = async (req, res) => {
     }
 };
 
+// em andamento
 // Exclusão (Delete)
-exports.delete = async (req, res) => {
+exports.delete = async (matricula) => {
     try {
-        const aluno = await Aluno.findByPk(req.params.id);
+        const aluno = await Aluno.findByPk(matricula);
         if (!aluno) {
-            return res.status(404).send('Aluno não encontrado');
+            return('Aluno não encontrado');
         }
         await aluno.destroy();
-        res.send('Aluno excluído com sucesso');
+        return('Aluno excluído com sucesso');
     }
         catch (error) {
-            res.status(500).send(error);
+            return('erro');
     }
 };

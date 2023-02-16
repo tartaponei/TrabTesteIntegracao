@@ -87,15 +87,15 @@ aluno
   .delete('/aluno/:id', function (req, res) {
     console.log('recebida requisição delete aluno :ID='+req.body.id);
     
-    /*
-    controllerAluno.deleteAluno(req.body.id)
-    .then(resultado => {
-      res.send('Aluno removido com sucesso')
-    })
+    
+    controllerAluno.delete(req.body.id)
+      .then(resultado => {
+        res.send('Aluno removido com sucesso')
+      })
     .catch(erro => {
       console.log(erro);
       res.send(erro);
-    }) */
+    }) 
   })  
 
   // altera aluno

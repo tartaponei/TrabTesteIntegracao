@@ -20,10 +20,7 @@ app.listen(3000, ()=>{
     console.log('Funciona');
 })
 
-//const Aluno = require('./modelos/aluno_modelo');
-//const Aluno = require('./controles/aluno_controle');
-
-sequelize.sync();
+Aluno.sync();
 //Aluno.sync({force: true});
 
 // teste de conexão
