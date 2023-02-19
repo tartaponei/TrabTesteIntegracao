@@ -27,6 +27,11 @@ Aluno.init({
         type: DataTypes.STRING,
         allowNull: true
     },
+
+    ano_entrada: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    }
 },{ sequelize, modelName: 'aluno' });
 
 module.exports = Aluno;

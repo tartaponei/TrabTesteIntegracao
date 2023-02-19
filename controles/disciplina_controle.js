@@ -1,4 +1,4 @@
-const Disciplina = require('../modelos/aluno_modelo');
+const Disciplina = require('../modelos/disciplina_modelo');
 const express = require('express');
 const app = express();
 const mysql = require('mysql2');

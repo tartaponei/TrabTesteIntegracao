@@ -4,23 +4,31 @@ const sequelize = new Sequelize('teste_integracao', 'root', '',
     host: 'localhost'}
 );
 
+// uso dos modelos
 const Aluno = require('./modelos/aluno_modelo');
+const Disciplina = require('./modelos/disciplina_modelo');
 
+// config express e porta
 const express = require('express')
 const port = 3000
 const app = express();
-
-app.use(express.json());
-app.use(express.urlencoded({extended:true}))
-
-var aluno = require('./rotas/aluno');
-app.use('/', aluno);
-
 app.listen(3000, ()=>{
     console.log('Funciona');
 })
 
+app.use(express.json());
+app.use(express.urlencoded({extended:true}))
+
+// uso das rotas
+var aluno = require('./rotas/aluno');
+app.use('/', aluno);
+
+var disciplina = require('./rotas/disciplina');
+app.use('/', disciplina);
+
+// sync com as tabelas
 Aluno.sync();
+Disciplina.sync();
 //Aluno.sync({force: true});
 
 // teste de conexão

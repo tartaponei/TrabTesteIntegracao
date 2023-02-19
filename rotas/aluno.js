@@ -71,6 +71,7 @@ aluno
     console.log('recebida requisição create aluno');
     //console.log(req.body);
 
+    // forçar erro
     controllerAluno.create(req.body)
       .then(resultado => {
         console.log(resultado);

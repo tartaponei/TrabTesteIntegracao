@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Disciplina</title>
+</head>
+<body>
+    <h1>Adicionando uma disciplina</h1>
+
+    <form action="/disciplina" method="POST">
+        <label for="nome">Nome da disciplina: </label>
+        <input type="text" name="nome"><br>
+
+        <label for="codigo">Código da disciplina: </label>
+        <input type="text" name="codigo"><br>
+
+        <label for="departamento">Departamento: </label>
+        <input type="text" name="departamento" id="departamento"><br>
+
+        <label for="carga_horaria">Carga horária (30, 60 ou 90h): </label>
+        <input type="number" name="carga_horaria"><br>
+
+        <input type="submit" value="Criar disciplina">
+    </form>
+</body>
+</html>

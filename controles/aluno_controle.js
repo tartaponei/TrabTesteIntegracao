@@ -6,12 +6,12 @@ const mysql = require('mysql2');
 // Criação (Create)
 exports.create = async (body) => {
     console.log(body);
-    let { nome, matricula, data_nascimento, email } = body;
+    let { nome, matricula, data_nascimento, email, ano_entrada } = body;
     console.log(data_nascimento);
     data_nascimento = String(data_nascimento);
 
     try {
-        let aluno = await Aluno.create({ nome, matricula, data_nascimento, email });
+        let aluno = await Aluno.create({ nome, matricula, data_nascimento, email, ano_entrada });
         //console.log(aluno);
         return aluno;
     } 

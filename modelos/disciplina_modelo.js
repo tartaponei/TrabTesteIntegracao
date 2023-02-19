@@ -27,6 +27,6 @@ Disciplina.init({
         type: DataTypes.INTEGER, // 30h, 60h, 90h
         allowNull: false
     }
-}, { sequelize, modelName: 'disiplina' });
+}, { sequelize, modelName: 'disciplina' });
 
 module.exports = Disciplina;

@@ -6,8 +6,8 @@ const disciplina = express.Router({mergeParams: true})
 const port = 3000;
 
 // Parser JSON para o body
-aluno.use(express.json());
-aluno.use(express.urlencoded({ extended: true }));
+disciplina.use(express.json());
+disciplina.use(express.urlencoded({ extended: true }));
 
 const controllerDisciplina = require('../controles/disciplina_controle');
 
@@ -35,7 +35,7 @@ disciplina.get('/disciplina/:id', function (req, res) { // :parametro diz que oq
 });
   
 disciplina.get('/criar-disciplina', function(req, res) {
-  //res.sendFile(path.join(__dirname, "../visoes/criar_disciplina.html"));
+  res.sendFile(path.join(__dirname, "../visoes/criar_disciplina.html"));
 });
 
 // consulta todos os disciplinas
@@ -54,7 +54,7 @@ disciplina
           disciplinaTemp = resultado[i];
           //console.log('aaaaaaaaaaa' + disciplinaTemp);
 
-          disciplinas = disciplinas + 'Nome: ' + disciplinaTemp.nome + '<br> Matrícula: ' + disciplinaTemp.matricula + '<br> Data de Nascimento: ' + disciplinaTemp.data_nascimento + '<br> Email: ' + disciplinaTemp.email + '<br> <br>'
+          disciplinas = disciplinas + 'Nome: ' + disciplinaTemp.nome + '<br> Código: ' + disciplinaTemp.codigo + '<br> Carga Horária: ' + disciplinaTemp.carga_horaria + '<br> Departamento: ' + disciplinaTemp.departamento + '<br> <br>'
         }
 
         res.send(disciplinas);
@@ -74,7 +74,7 @@ disciplina
     controllerDisciplina.create(req.body)
       .then(resultado => {
         console.log(resultado);
-        res.send('disciplina inserido com sucesso')
+        res.send('Disciplina inserida com sucesso')
       })
       .catch(erro => {
         console.log(erro);
