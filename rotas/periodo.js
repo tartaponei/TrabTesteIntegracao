@@ -44,7 +44,7 @@ periodo
     console.log('\nrecebida requisição get todos periodos ');
     //res.send('recebida get pra ver todos os periodos');
     
-    controllerperiodo.readAll()
+    controllerPeriodo.readAll()
     .then(resultado => {
         //res.send(resultado)
         var periodos = '<h1> Consultando todos os periodos </h1>';
