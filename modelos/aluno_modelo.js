@@ -3,7 +3,12 @@ const sequelize = new Sequelize('teste_integracao', 'root', '',
     {dialect: 'mysql', 
     host: 'localhost'});
 
-class Aluno extends Model {}
+class Aluno extends Model {
+    static associate(models) {
+        Aluno.belongsToMany(models.Turma, {through: models.Aluno_Turma});
+        //Aluno.belongsTo(models.Aluno_Turma);
+    }
+}
 
 Aluno.init({
     nome: {
@@ -12,7 +17,7 @@ Aluno.init({
     },
 
     matricula: {
-        type: DataTypes.STRING(11),
+        type: DataTypes.INTEGER(11),
         allowNull: false,
         unique: true,
         primaryKey: true
@@ -32,6 +37,6 @@ Aluno.init({
         type: DataTypes.INTEGER,
         allowNull: false
     }
-},{ sequelize, modelName: 'aluno' });
+},{ sequelize: sequelize, modelName: 'aluno' });
 
 module.exports = Aluno;

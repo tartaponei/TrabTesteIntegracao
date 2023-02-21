@@ -1,29 +1,32 @@
 const { Sequelize, Model, DataTypes } = require('sequelize');
+const Aluno = require('./aluno_modelo');
+const Turma = require('./turma_modelo');
 const sequelize = new Sequelize('teste_integracao', 'root', '',
     {dialect: 'mysql', 
     host: 'localhost'});
 
-class Aluno_Turma extends Model {}
+class Aluno_Turma extends Model {
+    static associate(models) {
+        Aluno_Turma.hasOne(models.Aluno, {foreignKey: 'matricula_aluno'});
+        Aluno_Turma.hasOne(models.Turma, {foreignKey: 'cod_turma'});
+    }
+}
 
 Aluno_Turma.init({
     matricula_aluno: {
         type: DataTypes.INTEGER(11),
         allowNull: false,
+        primaryKey: true,
 
-        references: {
-            model: Aluno,
-            key: 'matricula'
-        }
+        references: { model: Aluno , key: 'matricula' }
     },
 
     cod_turma: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        primaryKey: true,
 
-        references: {
-            model: Turma,
-            key: 'codigo'
-        }
+        references: { model: Turma, key: 'codigo' }
     },
 
     nota: {
@@ -35,6 +38,6 @@ Aluno_Turma.init({
         type: DataTypes.STRING,
         allowNull: true,
     }
-}, { sequelize, modelName: 'aluno_turma' });
+}, { sequelize: sequelize, modelName: 'aluno_turma' });
 
 module.exports = Aluno_Turma;

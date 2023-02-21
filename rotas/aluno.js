@@ -38,6 +38,10 @@ aluno.get('/criar-aluno', function(req, res) {
   res.sendFile(path.join(__dirname, "../visoes/criar_aluno.html"));
 });
 
+aluno.get('/excluir-aluno', function(req, res) {
+  res.sendFile(path.join(__dirname, "../visoes/excluir_aluno.html"));
+});
+
 // consulta todos os alunos
 aluno
   .get('/alunos', function (req, res) {

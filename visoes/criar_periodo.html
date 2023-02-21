@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Período</title>
+</head>
+<body>
+    <h1>Adicionando um periodo</h1>
+
+    <form action="/periodo" method="POST">
+        <label for="periodo">Nome do período ("ex.: 2021.1"): </label>
+        <input type="text" name="periodo"><br>
+
+        <label for="data_inicio">Data de início: </label>
+        <input type="date" name="data_inicio"><br>
+
+        <label for="data_fim">Data de fim: </label>
+        <input type="date" name="data_fim"><br>
+
+        <input type="submit" value="Criar período">
+    </form>
+</body>
+</html>

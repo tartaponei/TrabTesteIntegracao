@@ -3,6 +3,17 @@ const express = require('express');
 const app = express();
 const mysql = require('mysql2');
 
+exports.findDisciplinaId = async (codigo) => {
+    let idB = (Disciplina.findAll({
+        attributes: ['id'],
+        where: {
+            codigo: codigo
+        }
+    }));
+
+    return idB;
+}
+
 // Criação (Create)
 exports.create = async (body) => {
     console.log(body);
@@ -23,8 +34,12 @@ exports.create = async (body) => {
 // Leitura (Read)
 exports.read = async (codigo) => {
     console.log(codigo);
+
+    result = await this.findDisciplinaId(codigo);
+    id = result[0].id
+    console.log();
     try {
-        const disicplina = await Disciplina.findByPk(codigo);
+        const disicplina = await Disciplina.findByPk(id);
         console.log(disicplina);
         if (!disicplina) {
             //return res.status(404).send('disicplina não encontrado');

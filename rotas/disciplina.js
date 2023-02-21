@@ -23,7 +23,7 @@ disciplina.get('/disciplina/:id', function (req, res) { // :parametro diz que oq
     controllerDisciplina.read(codigo)
       .then(resultado => {
             //res.send(resultado);
-            res.send('<h1>Consultando disciplina código ' + resultado.codigo + '</h1>Nome: ' + resultado.nome + '<br> Departamento: ' + resultado.departamento + '<br> Carga Horária: ' + resultado.carga_horaria);
+            res.send('<h1>Consultando disciplina código ' + resultado.codigo + '</h1>Nome: ' + resultado.nome + '<br>Id geral: ' + resultado.id + '<br> Departamento: ' + resultado.departamento + '<br> Carga Horária: ' + resultado.carga_horaria);
 
             //res.send('achou');
         })
@@ -47,7 +47,7 @@ disciplina
     controllerDisciplina.readAll()
     .then(resultado => {
         //res.send(resultado)
-        var disciplinas = '<h1> Consultando todos os disciplinas </h1>';
+        var disciplinas = '<h1> Consultando todas os disciplinas </h1>';
         //console.log(resultado.length);
 
         for (var i = 0; i < resultado.length; i++) {

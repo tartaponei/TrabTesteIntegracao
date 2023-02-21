@@ -3,7 +3,11 @@ const sequelize = new Sequelize('teste_integracao', 'root', '',
     {dialect: 'mysql', 
     host: 'localhost'});
 
-class Periodo extends Model {}
+class Periodo extends Model {
+    static associate(models) {
+        Periodo.belongsTo(models.Turma);
+    }
+}
 
 Periodo.init({
     codigo: {
@@ -12,6 +16,11 @@ Periodo.init({
         primaryKey: true,
         unique: true,
         comment: '20221 é o código pro período 2022.1, chave tem que ser int'
+    },
+
+    nome: {
+        type: DataTypes.STRING,
+        allowNull: false
     },
 
     data_inicio: {

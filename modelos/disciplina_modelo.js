@@ -3,14 +3,25 @@ const sequelize = new Sequelize('teste_integracao', 'root', '',
     {dialect: 'mysql', 
     host: 'localhost'});
 
-class Disciplina extends Model {}
+class Disciplina extends Model {
+    static associate(models) {
+        Disciplina.belongsTo(models.Turma);
+    }
+}
 
 Disciplina.init({
+    id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        unique: true,
+        primaryKey: true,
+        autoIncrement: true
+    },
+
     codigo: {
         type: DataTypes.STRING(5),
         allowNull: false,
         unique: true,
-        primaryKey: true
     },
 
     departamento: {

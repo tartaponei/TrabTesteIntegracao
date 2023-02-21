@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Turma</title>
+</head>
+<body>
+    <h1>Adicionando uma turma</h1>
+
+    <form action="/turma" method="POST">
+        <label for="cod_disciplina">Código da disciplina da turma: </label>
+        <input type="text" name="cod_disciplina"><br>
+
+        <label for="num_turma">Número da turma: </label>
+        <input type="text" name="num_turma"><br>
+
+        <label for="professor">Professor: </label>
+        <input type="text" name="professor"><br>
+
+        <label for="sala">Sala: </label>
+        <input type="number" name="sala"><br>
+
+        <label for="horario">Horário (ex.: (246-T-23)): </label>
+        <input type="text" name="horario"><br>
+
+        <label for="periodo">Período (ex.: se for 2021.1, escreva 20211)): </label>
+        <input type="number" name="periodo"><br>
+
+        <input type="submit" value="Criar turma">
+    </form>
+</body>
+</html>

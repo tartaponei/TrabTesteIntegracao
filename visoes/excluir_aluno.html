@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="../rotas/aluno.js"></script> -->
+
+    <title>Excluindo Aluno</title>
+</head>
+<body>
+    <h1>Excluindo aluno</h1>
+    <form action="/aluno/:id" method="DELETE">
+        <label for="matricula">Matrícula do aluno a ser excluído:</label>
+        <input type="text" name="matricula" id="matricula"> </form> <br>
+        <input type="submit" value="Excluir aluno">
+    </form>
+</body>
+</html>
