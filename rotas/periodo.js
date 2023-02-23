@@ -98,19 +98,22 @@ periodo
     }) 
   })  
 
+  .get('/alterar-periodo', function (req, res) {
+    res.sendFile(path.join(__dirname, "../visoes/alterar_periodo.html"));
+  })
+
   // altera periodo
   .put('/periodo', function (req, res) {
     console.log('recebida requisição alterar periodo');
     
-    /*
-    controllerPeriodo.updateperiodo(req.body)
+    controllerPeriodo.update(req.body)
     .then(resultado => {
       res.send('periodo atualizado com sucesso')
     })
     .catch(erro => {
       console.log(erro);
       res.send(erro);
-    }) */
+    }) 
     
   });  
   

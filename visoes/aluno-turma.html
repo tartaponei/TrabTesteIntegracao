@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Associar Aluno a Turma</title>
+</head>
+<body>
+    <h1>Associando um aluno a uma turma</h1>
+
+    <form action="/aluno" method="POST">
+        <label for="matricula">Matrícula do aluno: </label>
+        <input type="number" name="matricula"><br>
+
+        <label for="cod_disciplina">Código da disciplina da turma: </label>
+        <input type="text" name="cod_disciplina"><br>
+
+        <label for="num_turma">Número da turma: </label>
+        <input type="text" name="num_turma"><br>
+
+        <input type="submit" value="Criar aluno">
+    </form>
+</body>
+</html>

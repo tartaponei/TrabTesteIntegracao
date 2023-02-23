@@ -59,18 +59,18 @@ exports.readAll = async () => {
 
 // nao implementado ainda
 // Atualização (Update)
-exports.update = async (req, res) => {
+exports.update = async (body) => {
+    const {codigo, data_inicio, data_fim} = body;
     try {
-        const periodo = await Periodo.findByPk(req.params.id);
+        const periodo = await Periodo.findByPk(codigo);
         if (!periodo) {
             return res.status(404).send('periodo não encontrado');
         }
-        const { matricula, nome, data_nascimento, email } = req.body;
-        await periodo.update({ matricula, nome, data_nascimento, email });
-        res.send(periodo);
+        await periodo.update({ codigo, data_inicio, data_fim });
+        return periodo;
     } 
     catch (error) {
-        res.status(500).send(error);
+       return error;;
     }
 };
 
