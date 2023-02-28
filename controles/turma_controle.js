@@ -4,6 +4,25 @@ const express = require('express');
 const Disciplina = require('../modelos/disciplina_modelo');
 const disciplinaController = require("../controles/disciplina_controle");
 
+exports.findTurma = async(numero, codigoDisc) => {
+    const result = await disciplinaController.findDisciplinaId(codigoDisc);
+    //console.log(result);
+    let disc = result[0].id;
+    console.log(disc);
+
+    let turma = await (Turma.findAll({
+        attributes: ['codigo'],
+        where: {
+            numero: numero,
+            id_disciplina: disc
+        }
+    }));
+
+    console.log(turma[0].codigo);
+
+    return turma[0].codigo;
+}
+
 // Criação (Create)
 exports.create = async (body) => {
     console.log(body);
@@ -17,7 +36,6 @@ exports.create = async (body) => {
     try {
         let disciplina = await disciplinaController.findDisciplinaId(cod_disciplina);
         disc = disciplina[0];
-        console.log("aaaa" + disc);
         idDisc = disc.id;
 
         //idDisc = 1;
@@ -29,14 +47,7 @@ exports.create = async (body) => {
 
     let turma = await Turma.create({ numero: num_turma, professor: professor, id_disciplina: idDisc, sala: sala, horario: horario, periodo: periodo });
         console.log(turma);
-        return turma; 
-
-    try {
-        
-    } 
-    catch (error) {
-        return error;
-    }
+        return "Turma inserida"; 
 };
 
 // Leitura (Read)

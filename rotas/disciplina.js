@@ -74,7 +74,7 @@ disciplina
     controllerDisciplina.create(req.body)
       .then(resultado => {
         console.log(resultado);
-        res.send('Disciplina inserida com sucesso')
+        res.send(resultado)
       })
       .catch(erro => {
         console.log(erro);

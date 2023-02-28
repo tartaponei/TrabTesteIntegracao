@@ -24,7 +24,7 @@ exports.create = async (body) => {
     try {
         let disciplina = await Disciplina.create({ codigo, departamento, nome, carga_horaria });
         //console.log(disciplina);
-        return disciplina;
+        return 'Disciplina inserida';
     } 
     catch (error) {
         return error;

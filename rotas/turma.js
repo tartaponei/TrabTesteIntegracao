@@ -63,7 +63,7 @@ turma
 
     controllerTurma.create(req.body)
     .then(resultado => {
-      res.send("turma inserida com sucesso")
+      res.send(resultado)
     })
     .catch(erro => {
       console.log(erro);
