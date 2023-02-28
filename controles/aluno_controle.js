@@ -3,6 +3,20 @@ const express = require('express');
 const app = express();
 const mysql = require('mysql2');
 
+function validarNascimento(data) {
+    if (data > '2007-01-01' || data < '1920-12-31') {
+        return "Data de nascimento inválida"
+    }
+    return 1;
+}
+
+function validarMatricula(matricula, ano_entrada) {
+    if(matricula.slice(0, 4) != matricula) {
+        return "Matrícula não condiz com ano de entrada do aluno"
+    }
+    return 1;
+}
+
 // Criação (Create)
 exports.create = async (body) => {
     console.log(body);
