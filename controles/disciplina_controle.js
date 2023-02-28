@@ -86,16 +86,18 @@ exports.update = async (req, res) => {
     }
 };
 
-// em andamento
 // Exclusão (Delete)
 exports.delete = async (codigo) => {
     try {
-        const disciplina = await Disciplina.findByPk(codigo);
+        result = await this.findDisciplinaId(codigo);
+        id = result[0].id;
+
+        const disciplina = await Disciplina.findByPk(id);
         if (!disciplina) {
-            return('disciplina não encontrado');
+            return('disciplina não encontrada');
         }
         await disciplina.destroy();
-        return('disciplina excluído com sucesso');
+        return('disciplina excluída com sucesso');
     }
         catch (error) {
             return('erro');

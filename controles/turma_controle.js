@@ -1,5 +1,7 @@
 const Turma = require('../modelos/turma_modelo');
 const express = require('express');
+const db = require('../modelos/db');
+const sequelize = require('sequelize');
 
 const Disciplina = require('../modelos/disciplina_modelo');
 const disciplinaController = require("../controles/disciplina_controle");
@@ -101,18 +103,25 @@ exports.update = async (req, res) => {
     }
 };
 
-// em andamento
 // Exclusão (Delete)
-exports.delete = async (codigo) => {
+exports.delete = async (disciplina, numero, periodo) => {
     try {
-        const turma = await Turma.findByPk(codigo);
+        let disciplinaId = await disciplinaController.findDisciplinaId(disciplina);
+        let disc = disciplinaId[0];
+        idDisc = disc.id;
+
+        const cod_turma = await db.sequelize.query(`select codigo from turmas where id_disciplina = :idDisc and numero = :numero and periodo = :periodo;`, { replacements: {idDisc: idDisc, numero: numero, periodo: periodo} });
+
+        const turma = await Turma.findByPk(cod_turma[0][0].codigo);
+
         if (!turma) {
-            return('turma não encontrado');
+            return('turma não encontrada');
         }
+
         await turma.destroy();
-        return('turma excluído com sucesso');
+        return('turma excluída com sucesso');
     }
         catch (error) {
-            return('erro');
+            return(error);
     }
 };

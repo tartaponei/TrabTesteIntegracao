@@ -72,18 +72,17 @@ turma
   })
   
   // deleta
-  .delete('/turma/:id', function (req, res) {
-    console.log("recebida requisição delete turma :ID="+req.body.id);
+  .delete('/turma/:disciplina/:numero/:periodo', function (req, res) {
+    console.log("recebida requisição delete turma numero="+req.params.numero+" disciplina=" +req.params.disciplina+" periodo=" + req.params.periodo);
     
-    /*
-    controllerTurma.deleteTurma(req.body.id)
+    controllerTurma.delete(req.params.disciplina, req.params.numero, req.params.periodo)
     .then(resultado => {
-      res.send("turma removido com sucesso")
+      res.send(resultado)
     })
     .catch(erro => {
       console.log(erro);
       res.send(erro);
-    }) */
+    });
   })  
 
   // altera turma

@@ -87,7 +87,6 @@ periodo
   .delete('/periodo/:id', function (req, res) {
     console.log('recebida requisição delete periodo '+ req.params.id);
     
-    
     controllerPeriodo.delete(req.params.id)
       .then(resultado => {
         res.send(resultado)

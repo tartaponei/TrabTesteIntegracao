@@ -103,7 +103,6 @@ exports.calcularIRA = async(matricula) => {
     return [iraGeral, irasPeriodos];
 }
 
-
 exports.vinculateTurma = async(body) => {
     let { matricula, cod_disciplina, num_turma, nota, resultado} = body;
 
@@ -197,7 +196,6 @@ exports.update = async (req, res) => {
     }
 };
 
-// em andamento
 // Exclusão (Delete)
 exports.delete = async (matricula) => {
     try {

@@ -127,12 +127,11 @@ aluno
   
   // deleta
   .delete('/aluno/:id', function (req, res) {
-    console.log('recebida requisição delete aluno :ID='+req.body.id);
+    console.log('recebida requisição delete aluno :ID='+req.params.id);
     
-    
-    controllerAluno.delete(req.body.id)
+    controllerAluno.delete(req.params.id)
       .then(resultado => {
-        res.send('Aluno removido com sucesso')
+        res.send(resultado)
       })
     .catch(erro => {
       console.log(erro);

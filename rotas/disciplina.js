@@ -85,16 +85,15 @@ disciplina
   
   // deleta
   .delete('/disciplina/:id', function (req, res) {
-    console.log('recebida requisição delete disciplina :ID='+req.body.id);
+    console.log('recebida requisição delete disciplina :ID='+req.params.id);
     
-    
-    controllerDisciplina.delete(req.body.id)
+    controllerDisciplina.delete(req.params.id)
       .then(resultado => {
-        res.send('disciplina removido com sucesso')
+        res.send(resultado)
       })
-    .catch(erro => {
-      console.log(erro);
-      res.send(erro);
+      .catch(erro => {
+        console.log(erro);
+        res.send(erro);
     }) 
   })  
 
@@ -102,15 +101,14 @@ disciplina
   .put('/disciplina', function (req, res) {
     console.log('recebida requisição alterar disciplina');
     
-    /*
-    controllerDisciplina.updatedisciplina(req.body)
-    .then(resultado => {
-      res.send('disciplina atualizado com sucesso')
-    })
+    controllerDisciplina.delete(req.params.id)
+      .then(resultado => {
+        res.send(resultado)
+      })
     .catch(erro => {
       console.log(erro);
       res.send(erro);
-    }) */
+    }) 
     
   });  
   

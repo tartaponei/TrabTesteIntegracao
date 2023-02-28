@@ -86,7 +86,6 @@ exports.update = async (body) => {
     }
 };
 
-// em andamento
 // Exclusão (Delete)
 exports.delete = async (codigo) => {
     try {
