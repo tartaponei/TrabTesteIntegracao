@@ -76,10 +76,10 @@ exports.update = async (body) => {
     try {
         const periodo = await Periodo.findByPk(codigo);
         if (!periodo) {
-            return res.status(404).send('periodo não encontrado');
+            return 'periodo não encontrado';
         }
         await periodo.update({ codigo, data_inicio, data_fim });
-        return periodo;
+        return 'periodo alterado';
     } 
     catch (error) {
        return error;;
@@ -90,7 +90,7 @@ exports.update = async (body) => {
 // Exclusão (Delete)
 exports.delete = async (codigo) => {
     try {
-        const periodo = await Pperiodo.findByPk(codigo);
+        const periodo = await Periodo.findByPk(codigo);
         if (!periodo) {
             return('periodo não encontrado');
         }

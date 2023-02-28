@@ -85,12 +85,12 @@ periodo
   
   // deleta
   .delete('/periodo/:id', function (req, res) {
-    console.log('recebida requisição delete periodo :ID='+req.body.id);
+    console.log('recebida requisição delete periodo '+ req.params.id);
     
     
-    controllerPeriodo.delete(req.body.id)
+    controllerPeriodo.delete(req.params.id)
       .then(resultado => {
-        res.send('periodo removido com sucesso')
+        res.send(resultado)
       })
     .catch(erro => {
       console.log(erro);
