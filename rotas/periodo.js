@@ -74,7 +74,7 @@ periodo
     controllerPeriodo.create(req.body)
       .then(resultado => {
         console.log(resultado);
-        res.send('periodo inserida com sucesso')
+        res.send(resultado)
       })
       .catch(erro => {
         console.log(erro);

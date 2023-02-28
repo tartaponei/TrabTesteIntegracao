@@ -17,7 +17,7 @@ Aluno.init({
     },
 
     matricula: {
-        type: DataTypes.INTEGER(11),
+        type: DataTypes.BIGINT,
         allowNull: false,
         unique: true,
         primaryKey: true

@@ -14,7 +14,7 @@ class Aluno_Turma extends Model {
 
 Aluno_Turma.init({
     matricula_aluno: {
-        type: DataTypes.INTEGER(11),
+        type: DataTypes.BIGINT,
         allowNull: false,
         primaryKey: true,
 

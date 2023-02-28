@@ -4,7 +4,8 @@
   "description": "Trabalho de teste de integração de Tópicos Especiais em Engenharia de Software.",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",

@@ -4,30 +4,40 @@ const app = express();
 const mysql = require('mysql2');
 
 function validarNascimento(data) {
-    if (data > '2007-01-01' || data < '1920-12-31') {
-        return "Data de nascimento inválida"
-    }
-    return 1;
+    console.log("entrei");
+    const maximo = new Date('2007-01-01');
+    const minimo = new Date('1920-12-31');
+    data = new Date(data);
+
+    maximo.setHours(0,0,0,0);
+    minimo.setHours(0,0,0,0);
+
+    //console.log(data > maximo);
+    if (data > maximo || data < minimo) return false;
+    return true;
 }
 
 function validarMatricula(matricula, ano_entrada) {
-    if(matricula.slice(0, 4) != matricula) {
-        return "Matrícula não condiz com ano de entrada do aluno"
-    }
-    return 1;
+    if(matricula.slice(0, 4) != ano_entrada) return false;
+    return true;
 }
 
 // Criação (Create)
 exports.create = async (body) => {
     console.log(body);
     let { nome, matricula, data_nascimento, email, ano_entrada } = body;
-    console.log(data_nascimento);
+    //console.log(data_nascimento);
     data_nascimento = String(data_nascimento);
 
+    //console.log("resultado: " + validarNascimento(data_nascimento));
+
     try {
-        let aluno = await Aluno.create({ nome, matricula, data_nascimento, email, ano_entrada });
-        //console.log(aluno);
-        return aluno;
+        if (!validarNascimento(data_nascimento)) return "Data fora dos limites";
+        if (!validarMatricula(matricula, ano_entrada)) return "Matrícula não corresponde ao ano de entrada";
+        
+        let aluno = await Aluno.create({ nome, matricula: matricula, data_nascimento, email, ano_entrada });
+        console.log(aluno);
+        return "Aluno inserido";
     } 
     catch (error) {
         return error;

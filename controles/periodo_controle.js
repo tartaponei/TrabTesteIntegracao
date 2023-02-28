@@ -1,8 +1,18 @@
 const Periodo = require('../modelos/periodo_modelo');
 const express = require('express');
 
-const Disciplina = require('../modelos/disciplina_modelo');
-const disciplinaController = require("./disciplina_controle");
+function validarPeriodo(data_inicio, data_fim) {
+    data_inicio = new Date(data_inicio);
+    data_fim = new Date(data_fim);
+
+    console.log(data_inicio);
+    console.log(data_fim);
+
+    console.log((data_fim - data_inicio) / (1000 * 60 * 60 * 24));
+
+    if ((data_fim - data_inicio) / (1000 * 60 * 60 * 24) < 90) return false;
+    return true;
+}
 
 // Criação (Create)
 exports.create = async (body) => {
@@ -14,9 +24,11 @@ exports.create = async (body) => {
     //console.log(codigo);
 
     try {
+        if (!validarPeriodo(data_inicio, data_fim)) return "Perído possui menos de 90 dias";
+
         let periodoTemp = await Periodo.create({ nome: periodo, codigo: codigo, data_inicio: data_inicio, data_fim: data_fim });
         console.log(periodoTemp);
-        return periodoTemp; 
+        return "Período inserido"; 
     } 
     catch (error) {
         return error;

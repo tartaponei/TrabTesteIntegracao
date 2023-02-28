@@ -79,7 +79,7 @@ aluno
     controllerAluno.create(req.body)
       .then(resultado => {
         console.log(resultado);
-        res.send('Aluno inserido com sucesso')
+        res.send(resultado)
       })
       .catch(erro => {
         console.log(erro);
