@@ -71,6 +71,8 @@ exports.readAll = async () => {
 
 // nao implementado ainda
 // Atualização (Update)
+
+// como passar coisas de formulário na requisição sem um HTML?
 exports.update = async (body) => {
     const {codigo, data_inicio, data_fim} = body;
     try {

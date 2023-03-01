@@ -1,5 +1,6 @@
 const express = require('express')
 const path = require('path');
+const calcularIRA = require('../controles/calcularIRA')
 
 const aluno = express.Router({mergeParams: true})
 
@@ -25,7 +26,7 @@ aluno.get('/aluno/:id', function (req, res) { // :parametro diz que oq vai receb
 
         //ira = await controllerAluno.calcularIRA(matricula);
 
-        controllerAluno.calcularIRA(matricula).then(result => {
+        calcularIRA.calcularIRA(matricula).then(result => {
           iras = result;
           console.log(result);
           const ira = iras[0];
