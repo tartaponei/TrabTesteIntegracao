@@ -35,7 +35,7 @@ async function calcularIRAPeriodo(matricula, periodo) {
 }
 
 exports.calcularIRA = async(matricula) => {
-    const result = await db.sequelize.query(`select alunos.nome, alunos.matricula, aluno_turmas.nota, turmas.id_disciplina, disciplinas.carga_horaria from alunos
+    const result = await db.sequelize.query(`select alunos.matricula, aluno_turmas.nota, disciplinas.carga_horaria from alunos
     inner join aluno_turmas
     inner join turmas 
     inner join disciplinas

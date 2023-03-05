@@ -16,15 +16,20 @@ const aluno = require('../rotas/aluno')
 //     if (err) throw err;
 //   });
 
-describe('GET /users', function() {
-  it('responds with json', async function() {
+describe('GET /alunos', function() {
+  it('Tem propriedades', async () => {
     const response = await request(aluno)
       .get('/alunos')
       .set('Accept', 'application/json')
-    //expect(response.headers["Content-Type"]).toMatch(/json/);
-    expect(response.body).not.toBeNull();
+      .expect(200);
+      
+      expect(response.body.Nome).not.toBeNull();
+      //expect(response.headers["Content-Type"]).toMatch(/json/);
+      //.end(function (err, response) {
+      // response.body.should.have.property("CR");
+      //expect(body).not.toBeNull();
+      })
   });
-});
 
 // it("GET /alunos", async () => {
 //   //test("GET /", (done) => {
