@@ -8,6 +8,7 @@ function calcularIRATest(matricula) {
 
     for(let i = 0; i < arqMock.length; i++) {
         if(arqMock[i].matricula == matricula) { // se for o da matricula que procura
+            console.log("entrei")
             const atual = arqMock[i];
             somatorioNotas += atual.nota1 * atual.ch1;
             somatorioNotas += atual.nota2 * atual.ch2;
@@ -21,6 +22,7 @@ function calcularIRATest(matricula) {
     const iraPeriodo = somatorioNotas / somatorioPesos;
 
     return[iraPeriodo, [iraPe1, iraPe2]]
+    //return 10;
 }
 
 module.exports = calcularIRATest;

@@ -8,6 +8,8 @@ for(let i = 0; i < arqMock.length; i++) {
     var saida = calcularIRATest(entrada);
 
     test('Caso de teste (' + entrada + ', ' + saida + ')', () => {
-        expect(calcularIRA.calcularIRA(entrada)).toBe(calcularIRATest(entrada))
+        return calcularIRA.calcularIRA(entrada).then(resultado => {
+            expect(resultado).toBe(calcularIRATest(entrada))
+        })
     });
 }
