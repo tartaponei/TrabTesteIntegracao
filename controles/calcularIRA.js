@@ -1,38 +1,7 @@
 const { QueryTypes } = require('sequelize');
 const sequelize = require('sequelize');
 const db = require('../modelos/db');
-
-async function calcularIRAPeriodo(matricula, periodo) {
-    const result = await db.sequelize.query(`select alunos.nome, alunos.matricula, aluno_turmas.nota, turmas.id_disciplina, disciplinas.carga_horaria, periodos.codigo from alunos
-    inner join aluno_turmas
-    inner join turmas 
-    inner join disciplinas
-    inner join periodos
-    where turmas.codigo = aluno_turmas.cod_turma 
-    and aluno_turmas.matricula_aluno = alunos.matricula 
-    and disciplinas.id = turmas.id_disciplina
-    and periodos.codigo = turmas.periodo
-    and alunos.matricula = :matricula
-    and turmas.periodo = :periodo;`, {
-        replacements: {matricula: matricula, periodo: periodo},
-        type: QueryTypes.SELECT
-    });
-
-    console.log(result);
-
-    let somatorioNotas = 0;
-    let somatorioPesos = 0;
-
-    for(let i = 0; i < result.length; i++) {
-        const atual = result[i];
-        somatorioNotas += atual.nota * atual.carga_horaria;
-        somatorioPesos += atual.carga_horaria;
-    }
-    
-    const iraPeriodo = somatorioNotas / somatorioPesos;
-
-    return iraPeriodo;
-}
+const calcularIRAPeriodo = require('./calcularIRAPeriodo');
 
 exports.calcularIRA = async(matricula) => {
     const result = await db.sequelize.query(`select alunos.matricula, aluno_turmas.nota, disciplinas.carga_horaria from alunos
@@ -43,8 +12,22 @@ exports.calcularIRA = async(matricula) => {
     and aluno_turmas.matricula_aluno = alunos.matricula 
     and disciplinas.id = turmas.id_disciplina and alunos.matricula = :matricula;`, { 
         replacements: { matricula: matricula }, 
-        type: QueryTypes.SELECT 
+        type: QueryTypes.SELECT,
+        logging: false,
+
+        // If plain is true, then sequelize will only return the first
+        // record of the result set. In case of false it will return all records.
+        plain: false,
+
+        // Set this to true if you don't have a model definition for your query.
+        raw: true,
     });
+
+    console.log(result);
+
+    if (result.length == 0) {
+        throw new Error("NÃO ENCONTRADO");
+    }
 
     let somatorioNotas = 0;
     let somatorioPesos = 0;
@@ -75,3 +58,6 @@ exports.calcularIRA = async(matricula) => {
 
     return [iraGeral, irasPeriodos];
 }
+
+// module.exports = calcularIRAPeriodo;
+// module.exports = calcularIRA;

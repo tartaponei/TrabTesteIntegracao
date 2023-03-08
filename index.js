@@ -63,3 +63,5 @@ catch (error) {
 //Aluno.read(43947837498);
 
 //Aluno.create({matricula: 43947837498, nome: 'joão', data_nascimento: '2002-03-12', email: 'joao@joao.com'});
+
+module.exports = app;

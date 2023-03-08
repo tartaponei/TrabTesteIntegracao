@@ -72,6 +72,8 @@ aluno
         var alunos = '<h1> Consultando todos os alunos </h1>';
         //console.log(resultado.length);
 
+        var alunosObj = [];
+
         for (var i = 0; i < resultado.length; i++) {
           alunoTemp = resultado[i];
           //console.log('aaaaaaaaaaa' + alunoTemp);
@@ -79,7 +81,7 @@ aluno
           alunos = alunos + 'Nome: ' + alunoTemp.nome + '<br> Matrícula: ' + alunoTemp.matricula + '<br> Data de Nascimento: ' + alunoTemp.data_nascimento + '<br> Email: ' + alunoTemp.email + '<br> <br>'
         }
 
-        res.send(alunos);
+        res.json(resultado);
     })
     .catch(erro => {
         console.log('Promise rejeitada (aluno): ' + erro);
